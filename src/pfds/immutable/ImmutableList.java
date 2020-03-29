@@ -4,23 +4,70 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 /**
- * Immutable implementation of the linked ImmutableList.
+ * The immutable implementation of the linked List.
+ * All the mutating methods return the mutated copy of the list.
+ * @param <T> the type of elements in this list
  */
 public interface ImmutableList<T> {
 
+  /**
+   * @return the first element of the list
+   */
   public Optional<T> head();
+
+  /**
+   * @return the sublist from the 2nd element onwards
+   */
   public ImmutableList<T> tail();
+
+  /**
+   * @return the size of the list.
+   */
   public long size();
+
+  /**
+   * @param elem the element to be added
+   * @return the new list adding elem to the beginning
+   */
   public ImmutableList<T> prepend(T elem);
+
+  /**
+   * @param elem the element to be added
+   * @return the new list adding elem at the end
+   */
   public ImmutableList<T> append(T elem);
+
+  /**
+   * @param elem the element to be inserted
+   * @param position the position to insert the element at
+   * @return the new list with elem at position
+   */
   public ImmutableList<T> insertAt(T elem, long position);
+
+  /**
+   * @param position the position to remove the element from
+   * @return the new list with the element from position removed
+   */
   public ImmutableList<T> deleteAt(long position);
+
+  /**
+   * @return the {@link Stream} copy of the list
+   */
   public Stream<T> stream();
 
+  /**
+   * @param <T> the type of the elements in the list
+   * @return the empty list
+   */
   public static <T> ImmutableList<T> of() {
     return new Empty<T>();
   }
 
+  /**
+   * @param <T> the type of the elements in the list
+   * @param elem the element to put in the list
+   * @return the singleton list
+   */
   public static <T> ImmutableList<T> of(T elem) {
     return new NonEmpty<T>(elem);
   }
