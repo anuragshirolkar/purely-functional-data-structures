@@ -1,0 +1,12 @@
+{
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/Library/Java/Extensions/JUNIT/junit-platform-console-standalone-1.6.1.jar"
+    ]
+}
